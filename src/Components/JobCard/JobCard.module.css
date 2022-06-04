@@ -1,0 +1,108 @@
+
+.row {
+    width: calc(100% - 280px);
+    height: calc(100% - 100px);
+    position: absolute;
+    top:100px;
+    left: 280px;
+    right: 0;
+    
+  }
+  
+  .JobCard{
+      width: 100%;
+      height: 100%;
+  }
+  .JobCardsrch{
+      width: 100%;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+  }
+  .search{
+    border-radius: 8px;
+    height: 40px;
+    width: 400px;
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    box-shadow: 0 3px 10px 0 rgba(45, 45, 45, 0.331);
+    margin-right: 40px;
+    
+  }
+  .JCard{
+      padding: 0 20px;
+      width: 100%;
+      height: 120px;
+      display: flex;
+      justify-content: space-between;
+  }
+  .JobAssign{
+      border-radius: 20px;
+      background-color: white;
+      width: 700px;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+  }
+  .myJob{
+      border-radius: 20px;
+      background-color:white;
+      width: 400px;
+      height: 100%;
+      display: flex;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+  }
+
+  .crcl{
+      width: 50px;
+      height: 50px;
+      background-color: #F4F7FE;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .Content{
+      width: calc(100% - 90px);
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+  }
+  .Content
+  .myJCicon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:30px;
+    font-size:50px; 
+    padding:10px;
+    background-color: rgba(128, 128, 128, 0.069);
+    border-radius: 50%;
+    border: 1px solid rgba(128, 128, 128, 0.069);
+  }
+  
+  
+  .JCA{
+    display: flex;
+    margin-right: 20px;
+    
+  }
+  .JCAicon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin:30px;
+    font-size:50px; 
+    padding:10px;
+    background-color: rgba(128, 128, 128, 0.069);
+    border-radius: 50%;
+    border: 1px solid rgba(128, 128, 128, 0.069);
+  }
