@@ -36,7 +36,7 @@ import {
          case SIGNIN_SUCCESS:
              localStorage.removeItem('token');
              localStorage.setItem('token', payload.accessToken);
-             axios.defaults.headers.common = localStorage.getItem('token');
+              axios.defaults.headers.common['Authorization'] = `Bearer ${payload.accessToken}`;
              return {
                  ...state,
                  ...payload,
@@ -57,7 +57,7 @@ import {
              };
              case LOGOUT:    
              localStorage.removeItem('token');
-             delete axios.defaults.headers.common['accessToken'];
+             delete axios.defaults.headers.common['Authorization'];
              return {
                  isAuthenticated: false,
                  errors: null,

@@ -41,7 +41,7 @@ function JobCard(props) {
     <>
       <div className={StyleCss.Container} >
         <Sidebar />
-        <Header />
+        <Header title='Activities' />
         <div className={JobCardCss.row}>
           <div className={JobCardCss.JobCard}>
             <div className={JobCardCss.JobCardsrch}>

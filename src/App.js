@@ -5,13 +5,19 @@ import { BrowserRouter,Routes,Route } from "react-router-dom";
 import JobCard from "./Components/JobCard/JobCard";
 import { connect } from "react-redux";
 import { loadUser } from "./Store/Actions/signinActions";
+import axios from "./Utility/AxiosConfig";
  class App extends Component {
 
   componentDidMount(){
+    console.log(axios.defaults.headers)
    let token = localStorage.token
    if(token){
+    
+    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+    
      this.props.loadUser(token)
-     console.log(this.props)
+   }else{
+    delete axios.defaults.headers.common['Authorization'];
    }
   }
 
@@ -22,7 +28,7 @@ import { loadUser } from "./Store/Actions/signinActions";
       
       <Routes>
         {
-          this.props.auth.isAuthenticated == true  ? <>
+          this.props.auth.isAuthenticated === true  ? <>
           <Route path='/dashboard/:jobcard' element={<JobCard />} />
           </>: <Route path='/' element={<SignIn />} />
         }

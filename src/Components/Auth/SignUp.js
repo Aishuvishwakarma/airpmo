@@ -1,45 +1,46 @@
 import React, { Component } from "react";
 import AuthCss from "./Auth.module.css";
+import axios from '../../Utility/AxiosConfig';
+import { connect } from "react-redux";
 
+import { SignUp } from "../../Store/Actions/SignUpUpAction";
 class Signup extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            firstName:'',
-            lastName:'',
-            password:'',
-            project: {
-                id: ''
-              },
-              roles:[
+            firstName: '',
+            lastName: '',
+            password: '',
+            roles: [
+                'user'
+            ],
+            username: ''
 
-              ],
-              username:''
-              
         }
     }
 
 
-  
 
-    OnChangeHandler = (e)=>{
+
+    OnChangeHandler = (e) => {
         e.persist()
-this.setState({[e.target.name]:e.target.value})
+        this.setState({ [e.target.name]: e.target.value })
     }
 
-    OnSubmithandler = (e)=>{
+    OnSubmithandler = (e) => {
         e.preventDefault();
-        
-
-
+        let { state} = this
+        if(state.username&&state.firstName&&state.lastName&&state.password){
+            this.props.SignUp(this.state,window.location)
+        }
     }
 
     render() {
         return (
             <>
                 <div className={AuthCss.signup}>
-                    <h2 style={{position:'absolute',top:'50px',left:'100px',fontSize:'30px'}} >airpmo</h2>
+                    <h2 style={{ position: 'absolute', top: '50px', left: '100px', fontSize: '30px' }} >airpmo</h2>
                     <div className={AuthCss.signupcontent}>
                         <div className={AuthCss.topContent}>
                             <div className={AuthCss.signupIcon}>
@@ -53,16 +54,16 @@ this.setState({[e.target.name]:e.target.value})
                         <div className={AuthCss.inputBox}>
                             <div className={AuthCss.inputdiv}>
                                 <div className={AuthCss.input1}>
-                                    <input type="text" placeholder="First Name" className={AuthCss.signupinput} />
-                                    <input type="text" placeholder="Phone Number" className={AuthCss.signupinput} />
-                                    <input type="text" placeholder="Job Title" className={AuthCss.signupinput} />
-                                    <input type="text" placeholder="Company Name" className={AuthCss.signupinput} />
+                                    <input type="text" placeholder="First Name" name="firstName" onChange={(e) => this.OnChangeHandler(e)} className={AuthCss.signupinput} />
+                                    <input type="text" placeholder="Phone Number" name='phoneNumber' onChange={(e) => this.OnChangeHandler(e)} className={AuthCss.signupinput} />
+                                    <input type="text" placeholder="Username" name='username' onChange={(e) => this.OnChangeHandler(e)} className={AuthCss.signupinput} />
+                                    <input type="password" placeholder="Password" name='password' onChange={(e) => this.OnChangeHandler(e)} className={AuthCss.signupinput} />
                                 </div>
                                 <div className={AuthCss.input2}>
-                                    <input type="text" placeholder="Last Name" className={AuthCss.signupinput} />
-                                    <input type="text" placeholder="Email" className={AuthCss.signupinput} />
-                                    <input type="text" placeholder="Company Name" className={AuthCss.signupinput} />
-                                    <input type="text" placeholder="Company Name" className={AuthCss.signupinput} />
+                                    <input type="text" placeholder="Last Name" name='lastName' onChange={(e) => this.OnChangeHandler(e)} className={AuthCss.signupinput} />
+                                    <input type="text" placeholder="Email" name='email' onChange={(e) => this.OnChangeHandler(e)} className={AuthCss.signupinput} />
+                                    <input type="text" placeholder="Company Name" name='companyname' onChange={(e) => this.OnChangeHandler(e)} className={AuthCss.signupinput} />
+                                    <input type="text" placeholder="Comment" name='comment' onChange={(e) => this.OnChangeHandler(e)} className={AuthCss.signupinput} />
                                 </div>
                             </div>
                             {/* <div>
@@ -70,8 +71,8 @@ this.setState({[e.target.name]:e.target.value})
                             </div> */}
                         </div>
                         <div className={AuthCss.signupbutton}>
-                            <button className={AuthCss.cancelbuttons} onClick={()=>window.location.pathname='/'} >Cancel</button>
-                            <button className={AuthCss.createbuttons}>Create Account</button>
+                            <button className={AuthCss.cancelbuttons} onClick={() => window.location.pathname = '/'} >Cancel</button>
+                            <button className={AuthCss.createbuttons} onClick={this.OnSubmithandler} >Create Account</button>
                         </div>
                     </div>
                 </div>
@@ -80,4 +81,14 @@ this.setState({[e.target.name]:e.target.value})
     }
 }
 
-export default Signup;
+// const mapStateToProps = state => ({
+//     auth: state.auth
+//     signupReducer: state.createdUser
+//   });
+  
+  const mapDispatchToProps = ({ 
+    SignUp:SignUp
+  });
+  
+  
+  export default connect(null,mapDispatchToProps)(Signup);
