@@ -6,10 +6,12 @@ import axios from '../../Utility/AxiosConfig';
 export const SignUp = (data,history)=> dispatch =>{
     axios.post('api/users', data)
     .then( success =>{
+        console.log(success)
         history.pathname  = '/dashboard/jobcard';
         return dispatch(successSignup(success.data));
     })
     .catch( fail => {
+        console.log(fail)
         history.pathname  = '/signup';
         return dispatch(failSignup(fail.response.data));
     });
